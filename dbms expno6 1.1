@@ -1,0 +1,74 @@
+
+insert into jobs values(101,'manager',50000,60000);
+Query OK, 1 row affected (0.05 sec)
+select*from jobs;
++--------+-----------+------------+------------+
+| job_id | job_title | min_salary | max_salary |
++--------+-----------+------------+------------+
+|    101 | manager   |      50000 |      60000 |
+|    102 | manager   |      50000 |      60000 |
++--------+-----------+------------+------------+
+
+mysql> insert into regions values(1550,'varkala');
+Query OK, 1 row affected (0.06 sec)
+mysql> select*from regions;
++-----------+-------------+
+| region_id | region_name |
++-----------+-------------+
+|      1550 | varkala     |
++-----------+-------------+
+1 row in set (0.00 sec)
+
+insert into countries values(4440,'india',1550);
+Query OK, 1 row affected (0.04 sec)
+mysql> select*from countries;
++------------+--------------+-----------+
+| country_id | country_name | region_id |
++------------+--------------+-----------+
+|       4440 | india        |      1550 |
++------------+--------------+-----------+
+1 row in set (0.00 sec)
+
+insert into locations values(1011,'thottakadu',526625,'tvm','tvmdistrict',4440);
+Query OK, 1 row affected (0.04 sec)
+mysql> select*from locations;
++-------------+----------------+---------+------+----------------+------------+
+| location_id | street_address | pincode | city | state_province | country_id |
++-------------+----------------+---------+------+----------------+------------+
+|        1011 | thottakadu     | 526625  | tvm  | tvmdistrict    |       4440 |
++-------------+----------------+---------+------+----------------+------------+
+1 row in set (0.00 sec)
+
+mysql> insert into department values(1011,'commerce',1011);
+Query OK, 1 row affected (0.07 sec)
+mysql> select*from department;
++---------+-----------+-------------+
+| dept_id | dept_name | location_id |
++---------+-----------+-------------+
+|    1011 | commerce  |        1011 |
++---------+-----------+-------------+
+1 row in set (0.00 sec)
+
+ insert into employees values(333,'anu','john','anu123@gmail.com',96748,5-01-2001,101,500000,630,1011);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select*from employees;
++-------------+------------+-----------+------------------+--------------+-----------+--------+--------+------------+---------+
+| employee_id | first_name | last_name | email            | phone_number | hire_date | job_id | salary | manager_id | dept_id |
++-------------+------------+-----------+------------------+--------------+-----------+--------+--------+------------+---------+
+| 333         | anu        | john      | anu123@gmail.com |        96748 | -1997     |    101 | 500000 |        630 |    1011 |
++-------------+------------+-----------+------------------+--------------+-----------+--------+--------+------------+---------+
+1 row in set (0.00 sec)
+
+mysql> insert into dependents values(888,'appu','joy','father',333);
+Query OK, 1 row affected (0.04 sec)
+mysql> select*from dependents;
++--------------+------------+-----------+--------------+-------------+
+| dependent_id | first_name | last_name | relationship | employee_id |
++--------------+------------+-----------+--------------+-------------+
+|          888 | appu       | joy       | father       | 333         |
++--------------+------------+-----------+--------------+-------------+
+1 row in set (0.00 sec)
+
+
+
