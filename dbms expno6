@@ -1,0 +1,107 @@
+use details;
+Database changed
+mysql> create table jobs(job_id int primary key,job_title varchar(50),min_salary int,max_salary int);
+Query OK, 0 rows affected (0.25 sec)
+
+create table employees(employee_id varchar(20) primary key,first_name varchar(20),last_name varchar(20),email varchar(100),phone_number
+int(10),hire_date varchar(20),job_id int,salary int,manager_id int,dept_id int,foreign key(job_id)references jobs(job_id));
+Query OK, 0 rows affected (0.49 sec)
+
+ create table dependents(dependent_id int primary key,first_name varchar(20),last_name varchar(20),relationship varchar(50),employee_id varchar(20),foreign key(employee_id)references employees(employee_id));
+Query OK, 0 rows affected (0.29 sec)
+
+create table regions(region_id int primary key,region_name varchar(20));
+Query OK, 0 rows affected (0.25 sec)
+
+ create table countries(country_id int primary key,country_name varchar(20),region_id int,foreign key(region_id)references regions(region_id));
+Query OK, 0 rows affected (0.51 sec)
+
+create table locations(location_id int primary key,street_address varchar(20),pincode varchar(20),city varchar(20),state_province varchar(20),country_id int,foreign key(country_id)references countries(country_id));
+Query OK, 0 rows affected (0.31 sec)
+
+mysql> create table department(dept_id int primary key,dept_name varchar(20),location_id int,foreign key(location_id)references locations(location_id));
+Query OK, 0 rows affected (0.40 sec)
+
+mysql> desc jobs;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| job_id     | int(11)     | NO   | PRI | NULL    |       |
+| job_title  | varchar(50) | YES  |     | NULL    |       |
+| min_salary | int(11)     | YES  |     | NULL    |       |
+| max_salary | int(11)     | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+4 rows in set (0.05 sec)
+
+mysql> desc employees;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| employee_id  | varchar(20)  | NO   | PRI | NULL    |       |
+| first_name   | varchar(20)  | YES  |     | NULL    |       |
+| last_name    | varchar(20)  | YES  |     | NULL    |       |
+| email        | varchar(100) | YES  |     | NULL    |       |
+| phone_number | int(10)      | YES  |     | NULL    |       |
+| hire_date    | varchar(20)  | YES  |     | NULL    |       |
+| job_id       | int(11)      | YES  | MUL | NULL    |       |
+| salary       | int(11)      | YES  |     | NULL    |       |
+| manager_id   | int(11)      | YES  |     | NULL    |       |
+| dept_id      | int(11)      | YES  |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+10 rows in set (0.03 sec)
+
+mysql> desc dependents;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| dependent_id | int(11)     | NO   | PRI | NULL    |       |
+| first_name   | varchar(20) | YES  |     | NULL    |       |
+| last_name    | varchar(20) | YES  |     | NULL    |       |
+| relationship | varchar(50) | YES  |     | NULL    |       |
+| employee_id  | varchar(20) | YES  | MUL | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> desc regions;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| region_id   | int(11)     | NO   | PRI | NULL    |       |
+| region_name | varchar(20) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc countries;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| country_id   | int(11)     | NO   | PRI | NULL    |       |
+| country_name | varchar(20) | YES  |     | NULL    |       |
+| region_id    | int(11)     | YES  | MUL | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc locations;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| location_id    | int(11)     | NO   | PRI | NULL    |       |
+| street_address | varchar(20) | YES  |     | NULL    |       |
+| pincode        | varchar(20) | YES  |     | NULL    |       |
+| city           | varchar(20) | YES  |     | NULL    |       |
+| state_province | varchar(20) | YES  |     | NULL    |       |
+| country_id     | int(11)     | YES  | MUL | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> desc department;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| dept_id     | int(11)     | NO   | PRI | NULL    |       |
+| dept_name   | varchar(20) | YES  |     | NULL    |       |
+| location_id | int(11)     | YES  | MUL | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+
