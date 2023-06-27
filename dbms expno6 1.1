@@ -70,5 +70,15 @@ mysql> select*from dependents;
 +--------------+------------+-----------+--------------+-------------+
 1 row in set (0.00 sec)
 
+Question no1
+
+mysql>  select employees.employee_id,employees.first_name,employees.last_name,department.dept_id from employees inner join department on  employees.dept_id= department.dept_id where location_id=1011;
++-------------+------------+-----------+---------+
+| employee_id | first_name | last_name | dept_id |
++-------------+------------+-----------+---------+
+| 333         | anu        | john      |    1011 |
++-------------+------------+-----------+---------+
+1 row in set (0.05 sec)
+
 
 
